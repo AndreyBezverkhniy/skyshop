@@ -18,25 +18,11 @@ public class StorageService {
     public StorageService() {
         articles = new HashMap<UUID, Article>();
         products = new HashMap<UUID, Product>();
-        Article[] articlesToAdd = {
-                new Article(UUID.randomUUID(), "Dapple_double", "Text"),
-                new Article(UUID.randomUUID(), "Dapple_double", "Text"),
-                new Article(UUID.randomUUID(), "length_1", "Text"),
-                new Article(UUID.randomUUID(), "length_333", "Text"),
-                new Article(UUID.randomUUID(), "length_22", "Text"),
-                new Article(UUID.randomUUID(), "length_4444", "Text"),
-                new Article(UUID.randomUUID(), "length_long_alphabet_abc", "Text"),
-                new Article(UUID.randomUUID(), "length_long_alphabet_acc", "Text"),
-                new Article(UUID.randomUUID(), "length_long_alphabet_aac", "Text"),
-        };
+        Article[] articlesToAdd = {new Article(UUID.randomUUID(), "Dapple_double", "Text"), new Article(UUID.randomUUID(), "Dapple_double", "Text"), new Article(UUID.randomUUID(), "length_1", "Text"), new Article(UUID.randomUUID(), "length_333", "Text"), new Article(UUID.randomUUID(), "length_22", "Text"), new Article(UUID.randomUUID(), "length_4444", "Text"), new Article(UUID.randomUUID(), "length_long_alphabet_abc", "Text"), new Article(UUID.randomUUID(), "length_long_alphabet_acc", "Text"), new Article(UUID.randomUUID(), "length_long_alphabet_aac", "Text"),};
         for (Article article : articlesToAdd) {
             articles.put(article.getId(), article);
         }
-        Product[] productsToAdd = {
-                new SimpleProduct(UUID.randomUUID(), "SimpleProduct", 123),
-                new FixPriceProduct(UUID.randomUUID(), "FixPriceProduct"),
-                new DiscountProduct(UUID.randomUUID(), "DiscountProduct", 1000, 10),
-        };
+        Product[] productsToAdd = {new SimpleProduct(UUID.randomUUID(), "SimpleProduct", 123), new FixPriceProduct(UUID.randomUUID(), "FixPriceProduct"), new DiscountProduct(UUID.randomUUID(), "DiscountProduct", 1000, 10),};
         for (Product product : productsToAdd) {
             products.put(product.getId(), product);
         }
@@ -55,5 +41,9 @@ public class StorageService {
         searchables.addAll(products.values());
         searchables.addAll(articles.values());
         return searchables;
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
     }
 }
