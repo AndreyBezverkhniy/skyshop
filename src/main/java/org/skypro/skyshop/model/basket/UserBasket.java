@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class UserBasket {
-    List<BasketItem> basketItemList;
-    int total;
+    private List<BasketItem> basketItemList;
+    private int total;
 
     public UserBasket(@NotNull List<BasketItem> basketItemList) {
         this.basketItemList = basketItemList;
